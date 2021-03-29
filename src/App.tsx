@@ -1,3 +1,8 @@
 import React, { FC } from 'react'
+import { MainPage } from './pages/MainPage/MainPage'
 
-export const App: FC = () => <h1>Hello React!</h1>
+export const App: FC = () => (
+  <h1>
+    <MainPage />
+  </h1>
+)
