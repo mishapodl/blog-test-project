@@ -32,8 +32,38 @@ interface ISetPostsPageAction {
   payload: number
 }
 
+export enum PostEditActions {
+  UPDATE_POST = 'UPDATE_POST',
+  DELETE_POST = 'DELETE_POST',
+  ADD_POST = 'ADD_POST',
+}
+
+interface IUpdatePostAction {
+  type: PostEditActions.UPDATE_POST
+  payload: {
+    id: number
+    data: any
+  }
+}
+
+interface IAddPostAction {
+  type: PostEditActions.ADD_POST
+  payload: any
+}
+
+interface IDeletePostsPageAction {
+  type: PostEditActions.DELETE_POST
+  payload: {
+    id: number
+    page: number
+  }
+}
+
 export type PostActions =
   | IFetchPostAction
   | IFetchPostSucessAction
   | IFetchPostErrorAction
   | ISetPostsPageAction
+  | IDeletePostsPageAction
+  | IAddPostAction
+  | IUpdatePostAction

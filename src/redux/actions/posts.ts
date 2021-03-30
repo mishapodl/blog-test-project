@@ -1,7 +1,11 @@
 import axios from 'axios'
 import { Dispatch } from 'redux'
 import { LIMIT_LODAED_POSTS } from '../../constants'
-import { PostActions, PostsActionTypes } from '../../types/posts'
+import {
+  PostActions,
+  PostsActionTypes,
+  PostEditActions,
+} from '../../types/posts'
 
 export const fetchPosts = () => {
   return async (dispatch: Dispatch<PostActions>) => {
@@ -28,4 +32,16 @@ export const fetchPosts = () => {
 
 export const setPostsPage = (page: number): PostActions => {
   return { type: PostsActionTypes.SET_POSTS_PAGE, payload: page }
+}
+
+export const updatePost = (data: any, id: number): PostActions => {
+  return { type: PostEditActions.UPDATE_POST, payload: { data, id } }
+}
+
+export const deletePost = (id: number, page: number): PostActions => {
+  return { type: PostEditActions.DELETE_POST, payload: { id, page } }
+}
+
+export const addPost = (data: any): PostActions => {
+  return { type: PostEditActions.ADD_POST, payload: data }
 }

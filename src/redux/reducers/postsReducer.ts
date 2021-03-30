@@ -1,5 +1,10 @@
 import { POSTS_ON_PAGE } from '../../constants'
-import { IPostsState, PostActions, PostsActionTypes } from '../../types/posts'
+import {
+  IPostsState,
+  PostActions,
+  PostEditActions,
+  PostsActionTypes,
+} from '../../types/posts'
 
 const initialState: IPostsState = {
   posts: [],
@@ -14,16 +19,20 @@ const getCurrentPost = (posts: any[], page: number) => {
   return posts.slice(start, start + POSTS_ON_PAGE)
 }
 
+const toFilterPosts = (posts: any[], id: number) => {
+  return posts.filter((p) => p.id !== id)
+}
+const toUpdatePost = (posts: any[], data: any, id: number) => {
+  return posts.map((p) => (p.id === id ? data : p))
+}
+
 export const postReducer = (
   state = initialState,
   aciton: PostActions
 ): IPostsState => {
   switch (aciton.type) {
     case PostsActionTypes.FETCH_POST:
-      return {
-        ...state,
-        loading: true,
-      }
+      return { ...state, loading: true }
     case PostsActionTypes.FETCH_POST_SUCCESS:
       return {
         ...state,
@@ -44,6 +53,25 @@ export const postReducer = (
         ...state,
         page: aciton.payload,
         currentPostsPage: getCurrentPost(state.posts, aciton.payload),
+      }
+    case PostEditActions.UPDATE_POST:
+      const { id, data } = aciton.payload
+      return {
+        ...state,
+        posts: toUpdatePost(state.posts, data, id),
+        currentPostsPage: toUpdatePost(state.currentPostsPage, data, id),
+      }
+    case PostEditActions.DELETE_POST:
+      const updatedPosts = toFilterPosts(state.posts, aciton.payload.id)
+      return {
+        ...state,
+        posts: updatedPosts,
+        currentPostsPage: getCurrentPost(updatedPosts, aciton.payload.page),
+      }
+    case PostEditActions.ADD_POST:
+      return {
+        ...state,
+        posts: [...state.posts, aciton.payload],
       }
     default:
       return state
