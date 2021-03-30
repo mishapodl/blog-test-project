@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { Dispatch } from 'redux'
+import { LIMIT_LODAED_POSTS } from '../../constants'
 import { PostActions, PostsActionTypes } from '../../types/posts'
 
 export const fetchPosts = () => {
@@ -7,7 +8,10 @@ export const fetchPosts = () => {
     try {
       dispatch({ type: PostsActionTypes.FETCH_POST })
       const { data } = await axios.get(
-        'https://jsonplaceholder.typicode.com/posts?_limit=3'
+        'https://jsonplaceholder.typicode.com/posts',
+        {
+          params: { _limit: LIMIT_LODAED_POSTS },
+        }
       )
       dispatch({
         type: PostsActionTypes.FETCH_POST_SUCCESS,
@@ -20,4 +24,8 @@ export const fetchPosts = () => {
       })
     }
   }
+}
+
+export const setPostsPage = (page: number): PostActions => {
+  return { type: PostsActionTypes.SET_POSTS_PAGE, payload: page }
 }
