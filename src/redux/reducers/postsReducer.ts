@@ -69,9 +69,16 @@ export const postReducer = (
         currentPostsPage: getCurrentPost(updatedPosts, aciton.payload.page),
       }
     case PostEditActions.ADD_POST:
+      const newPost = {
+        id: state.posts[state.posts.length - 1].id + 1,
+        // userId: aciton.payload,
+        userId: 0,
+        title: '',
+        body: '',
+      }
       return {
         ...state,
-        posts: [...state.posts, aciton.payload],
+        posts: [...state.posts, newPost],
       }
     default:
       return state
