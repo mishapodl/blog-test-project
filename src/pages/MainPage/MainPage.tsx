@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
-import './MainPage.scss'
 import { Post } from '../../components/Post/Post'
 import { Pagination } from '../../components/Pagination/Pagination'
+import './MainPage.scss'
 
 export const MainPage: FC = () => {
   return (

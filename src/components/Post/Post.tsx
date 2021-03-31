@@ -2,12 +2,11 @@ import React, { FC } from 'react'
 import { useTypedSelector } from './../../hooks/useTypedSelector'
 import { useActions } from './../../hooks/useActions'
 import { usePost } from '../../hooks/usePost'
-
-import './Post.scss'
 import { Button } from './../Button/Button'
 import { ShortPost } from '../ShortPost/ShortPost'
 import { Link } from 'react-router-dom'
 import { IPost } from '../../types/posts'
+import './Post.scss'
 
 export const Post: FC = () => {
   const { loading, error, page } = useTypedSelector((state) => state.posts)

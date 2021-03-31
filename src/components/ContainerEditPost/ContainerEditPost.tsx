@@ -3,6 +3,7 @@ import { useActions } from '../../hooks/useActions'
 import { Button } from '../Button/Button'
 import { Input } from '../Input/Input'
 import { TextArea } from '../TextArea/TextArea'
+import './ContainerEditPost.scss'
 
 interface IEditPost {
   id: number
