@@ -4,7 +4,6 @@ import { useActions } from './../../hooks/useActions'
 import { usePost } from '../../hooks/usePost'
 import { Button } from './../Button/Button'
 import { ShortPost } from '../ShortPost/ShortPost'
-import { Link } from 'react-router-dom'
 import { IPost } from '../../types/posts'
 import './Post.scss'
 
@@ -23,9 +22,7 @@ export const Post: FC = () => {
           <div>
             {currentPostsPage.map((p: IPost) => (
               <div key={p.id}>
-                <Link to={`/post/${p.id}`}>
-                  <ShortPost p={p} page={page} />
-                </Link>
+                <ShortPost p={p} page={page} />
               </div>
             ))}
           </div>

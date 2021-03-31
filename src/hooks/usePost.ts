@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { IPost } from '../types/posts'
 import { useActions } from './useActions'
 import { useTypedSelector } from './useTypedSelector'
 
@@ -10,5 +11,9 @@ export const usePost = () => {
     localStorage.getItem('posts') ? getLocalPosts() : fetchPosts()
   }, [])
 
-  return { posts, currentPostsPage }
+  const specificPost = (id: number): IPost => {
+    return posts.filter((p: IPost) => p.id == id)[0]
+  }
+
+  return { posts, currentPostsPage, specificPost }
 }
