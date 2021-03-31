@@ -17,3 +17,8 @@ export const loadComments = async (id: number) => {
   )
   return data
 }
+
+export const loadUsers = async () => {
+  const { data } = await axios.get(`https://jsonplaceholder.typicode.com/users`)
+  return data
+}

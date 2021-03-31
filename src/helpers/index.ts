@@ -1,6 +1,7 @@
 import { POSTS_ON_PAGE } from '../constants'
+import { IPost } from './../types/posts'
 
-export const getCountPages = (posts: any[]) => {
+export const getCountPages = (posts: IPost[]): number[] => {
   const pages: number[] = []
   const countPages =
     posts.length % POSTS_ON_PAGE === 1
@@ -10,4 +11,9 @@ export const getCountPages = (posts: any[]) => {
     pages.push(i)
   }
   return pages
+}
+
+export const getLocal = (key: string) => {
+  const data: any = localStorage.getItem(key)
+  return data ? JSON.parse(data) : null
 }

@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { getLocal } from '../helpers'
 import { IPost } from '../types/posts'
 import { useActions } from './useActions'
 import { useTypedSelector } from './useTypedSelector'
@@ -8,7 +9,7 @@ export const usePost = () => {
   const { fetchPosts, getLocalPosts } = useActions()
 
   useEffect(() => {
-    localStorage.getItem('posts') ? getLocalPosts() : fetchPosts()
+    getLocal('posts') ? getLocalPosts() : fetchPosts()
   }, [])
 
   const specificPost = (id: number): IPost => {
