@@ -42,6 +42,12 @@ export const postReducer = (
         posts: aciton.payload,
         currentPostsPage: aciton.payload.slice(0, POSTS_ON_PAGE),
       }
+    case PostsActionTypes.GET_POST_LOCAL:
+      return {
+        ...state,
+        posts: aciton.payload,
+        currentPostsPage: aciton.payload.slice(0, POSTS_ON_PAGE),
+      }
     case PostsActionTypes.FETCH_POST_ERROR:
       return {
         ...state,
