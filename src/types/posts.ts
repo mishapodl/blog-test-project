@@ -6,6 +6,7 @@ export interface IPostsState {
   page: number
 }
 
+// Posts
 export enum PostsActionTypes {
   FETCH_POST = 'FETCH_POST',
   FETCH_POST_SUCCESS = 'FETCH_POST_SUCCESS',
@@ -67,3 +68,36 @@ export type PostActions =
   | IDeletePostsPageAction
   | IAddPostAction
   | IUpdatePostAction
+
+// Comments
+export interface ICommentsState {
+  comments: any[]
+  loading: boolean
+  error: string | null
+}
+
+export enum CommentsActionTypes {
+  FETCH_COMMENTS = 'FETCH_COMMENTS',
+  FETCH_COMMENTS_SUCCESS = 'FETCH_COMMENTS_SUCCESS',
+  FETCH_COMMENTS_ERROR = 'FETCH_COMMENTS_ERROR',
+  SET_POSTS_PAGE = 'SET_POSTS_PAGE',
+}
+
+interface IFetchCommentsAction {
+  type: CommentsActionTypes.FETCH_COMMENTS
+}
+
+interface IFetchCommentsSucessAction {
+  type: CommentsActionTypes.FETCH_COMMENTS_SUCCESS
+  payload: any
+}
+
+interface IFetchCommentsErrorAction {
+  type: CommentsActionTypes.FETCH_COMMENTS_ERROR
+  payload: string
+}
+
+export type CommentsActions =
+  | IFetchCommentsAction
+  | IFetchCommentsSucessAction
+  | IFetchCommentsErrorAction
