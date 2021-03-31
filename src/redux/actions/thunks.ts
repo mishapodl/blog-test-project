@@ -15,6 +15,5 @@ export const loadComments = async (id: number) => {
   const { data } = await axios.get(
     `https://jsonplaceholder.typicode.com/post/${id}/comments`
   )
-  console.log(data)
   return data
 }

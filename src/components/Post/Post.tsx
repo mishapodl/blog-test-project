@@ -7,6 +7,7 @@ import './Post.scss'
 import { Button } from './../Button/Button'
 import { ShortPost } from '../ShortPost/ShortPost'
 import { Link } from 'react-router-dom'
+import { IPost } from '../../types/posts'
 
 export const Post: FC = () => {
   const { loading, error, page } = useTypedSelector((state) => state.posts)
@@ -21,7 +22,7 @@ export const Post: FC = () => {
       {!loading ? (
         <>
           <div>
-            {currentPostsPage.map((p: any) => (
+            {currentPostsPage.map((p: IPost) => (
               <div key={p.id}>
                 <Link to={`/post/${p.id}`}>
                   <ShortPost p={p} page={page} />

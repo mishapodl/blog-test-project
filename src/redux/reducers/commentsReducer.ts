@@ -2,7 +2,7 @@ import {
   ICommentsState,
   CommentsActions,
   CommentsActionTypes,
-} from '../../types/posts'
+} from '../../types/comments'
 
 const initialState: ICommentsState = {
   comments: [],

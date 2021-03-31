@@ -1,6 +1,13 @@
+export interface IPost {
+  id: number
+  userId: number
+  title: string
+  body: string
+}
+
 export interface IPostsState {
-  posts: any[]
-  currentPostsPage: any[]
+  posts: IPost[]
+  currentPostsPage: IPost[]
   loading: boolean
   error: null | string
   page: number
@@ -20,7 +27,7 @@ interface IFetchPostAction {
 
 interface IFetchPostSucessAction {
   type: PostsActionTypes.FETCH_POST_SUCCESS
-  payload: any[]
+  payload: IPost[]
 }
 
 interface IFetchPostErrorAction {
@@ -43,13 +50,13 @@ interface IUpdatePostAction {
   type: PostEditActions.UPDATE_POST
   payload: {
     id: number
-    data: any
+    data: IPost
   }
 }
 
 interface IAddPostAction {
   type: PostEditActions.ADD_POST
-  payload: any
+  payload: IPost
 }
 
 interface IDeletePostsPageAction {
@@ -68,36 +75,3 @@ export type PostActions =
   | IDeletePostsPageAction
   | IAddPostAction
   | IUpdatePostAction
-
-// Comments
-export interface ICommentsState {
-  comments: any[]
-  loading: boolean
-  error: string | null
-}
-
-export enum CommentsActionTypes {
-  FETCH_COMMENTS = 'FETCH_COMMENTS',
-  FETCH_COMMENTS_SUCCESS = 'FETCH_COMMENTS_SUCCESS',
-  FETCH_COMMENTS_ERROR = 'FETCH_COMMENTS_ERROR',
-  SET_POSTS_PAGE = 'SET_POSTS_PAGE',
-}
-
-interface IFetchCommentsAction {
-  type: CommentsActionTypes.FETCH_COMMENTS
-}
-
-interface IFetchCommentsSucessAction {
-  type: CommentsActionTypes.FETCH_COMMENTS_SUCCESS
-  payload: any
-}
-
-interface IFetchCommentsErrorAction {
-  type: CommentsActionTypes.FETCH_COMMENTS_ERROR
-  payload: string
-}
-
-export type CommentsActions =
-  | IFetchCommentsAction
-  | IFetchCommentsSucessAction
-  | IFetchCommentsErrorAction

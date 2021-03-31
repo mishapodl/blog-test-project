@@ -1,10 +1,15 @@
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 import { useActions } from '../../hooks/useActions'
 import { Button } from '../Button/Button'
 import { Input } from '../Input/Input'
 import { TextArea } from '../TextArea/TextArea'
 
-export const ContainerEditPost = ({ id, onEdit }: any) => {
+interface IEditPost {
+  id: number
+  onEdit: (edit: boolean) => void
+}
+
+export const ContainerEditPost: FC<IEditPost> = ({ id, onEdit }: IEditPost) => {
   const { updatePost } = useActions()
   const [editPost, setEditPost] = useState(
     JSON.parse(localStorage.getItem(`post-${id}`) || '')

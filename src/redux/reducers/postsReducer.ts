@@ -4,6 +4,7 @@ import {
   PostActions,
   PostEditActions,
   PostsActionTypes,
+  IPost,
 } from '../../types/posts'
 
 const initialState: IPostsState = {
@@ -14,16 +15,16 @@ const initialState: IPostsState = {
   page: 1,
 }
 
-const getCurrentPost = (posts: any[], page: number) => {
+const getCurrentPost = (posts: IPost[], page: number) => {
   const start = page === 1 ? 0 : page * POSTS_ON_PAGE - POSTS_ON_PAGE
   return posts.slice(start, start + POSTS_ON_PAGE)
 }
 
-const toFilterPosts = (posts: any[], id: number) => {
+const toFilterPosts = (posts: IPost[], id: number): IPost[] => {
   return posts.filter((p) => p.id !== id)
 }
-const toUpdatePost = (posts: any[], data: any, id: number) => {
-  return posts.map((p) => (p.id === id ? data : p))
+const toUpdatePost = (posts: IPost[], data: IPost, id: number) => {
+  return posts.map((p: IPost) => (p.id === id ? data : p))
 }
 
 export const postReducer = (

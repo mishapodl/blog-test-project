@@ -3,6 +3,7 @@ import {
   PostActions,
   PostsActionTypes,
   PostEditActions,
+  IPost,
 } from '../../types/posts'
 import { loadPosts } from './thunks'
 
@@ -10,7 +11,7 @@ export const fetchPosts = () => {
   return async (dispatch: Dispatch<PostActions>) => {
     try {
       dispatch({ type: PostsActionTypes.FETCH_POST })
-      const data = await loadPosts()
+      const data: IPost[] = await loadPosts()
       dispatch({
         type: PostsActionTypes.FETCH_POST_SUCCESS,
         payload: data,
@@ -38,10 +39,10 @@ export const setPostsPage = (page: number): PostActions => {
   return { type: PostsActionTypes.SET_POSTS_PAGE, payload: page }
 }
 
-export const updatePost = (data: any, id: number) => {
+export const updatePost = (data: IPost, id: number) => {
   return (dispatch: Dispatch<PostActions>) => {
     let posts = JSON.parse(localStorage.getItem('posts') || '')
-    posts = posts.map((p: any) => (p.id === id ? data : p))
+    posts = posts.map((p: IPost) => (p.id === id ? data : p))
     localStorage.setItem('posts', JSON.stringify(posts))
 
     dispatch({
@@ -54,7 +55,7 @@ export const updatePost = (data: any, id: number) => {
 export const deletePost = (id: number, page: number) => {
   return (dispatch: Dispatch<PostActions>) => {
     let posts = JSON.parse(localStorage.getItem('posts') || '')
-    posts = posts.filter((p: any) => p.id !== id)
+    posts = posts.filter((p: IPost) => p.id !== id)
     localStorage.setItem('posts', JSON.stringify(posts))
 
     dispatch({ type: PostEditActions.DELETE_POST, payload: { id, page } })
