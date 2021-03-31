@@ -17,6 +17,7 @@ export interface IPostsState {
 export enum PostsActionTypes {
   FETCH_POST = 'FETCH_POST',
   FETCH_POST_SUCCESS = 'FETCH_POST_SUCCESS',
+  GET_POST_LOCAL = 'GET_POST_LOCAL',
   FETCH_POST_ERROR = 'FETCH_POST_ERROR',
   SET_POSTS_PAGE = 'SET_POSTS_PAGE',
 }
@@ -27,6 +28,11 @@ interface IFetchPostAction {
 
 interface IFetchPostSucessAction {
   type: PostsActionTypes.FETCH_POST_SUCCESS
+  payload: IPost[]
+}
+
+interface IGetPostLocalAction {
+  type: PostsActionTypes.GET_POST_LOCAL
   payload: IPost[]
 }
 
@@ -75,3 +81,4 @@ export type PostActions =
   | IDeletePostsPageAction
   | IAddPostAction
   | IUpdatePostAction
+  | IGetPostLocalAction
