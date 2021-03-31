@@ -1,4 +1,4 @@
-import React, { ReactEventHandler, useState } from 'react'
+import React, { useState } from 'react'
 import { useActions } from '../../hooks/useActions'
 import { Button } from '../Button/Button'
 import { Input } from '../Input/Input'
