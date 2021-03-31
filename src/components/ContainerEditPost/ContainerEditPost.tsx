@@ -1,5 +1,6 @@
 import React, { FC, useState } from 'react'
 import { useActions } from '../../hooks/useActions'
+import { useTypedSelector } from '../../hooks/useTypedSelector'
 import { Button } from '../Button/Button'
 import { Input } from '../Input/Input'
 import { TextArea } from '../TextArea/TextArea'
@@ -7,10 +8,16 @@ import { TextArea } from '../TextArea/TextArea'
 interface IEditPost {
   id: number
   onEdit: (edit: boolean) => void
+  separatePost?: boolean
 }
 
-export const ContainerEditPost: FC<IEditPost> = ({ id, onEdit }: IEditPost) => {
-  const { updatePost } = useActions()
+export const ContainerEditPost: FC<IEditPost> = ({
+  id,
+  onEdit,
+  separatePost = false,
+}: IEditPost) => {
+  const { updatePost, setPostsPage } = useActions()
+  const { page } = useTypedSelector((state) => state.posts)
   const [editPost, setEditPost] = useState(
     JSON.parse(localStorage.getItem(`post-${id}`) || '')
   )
@@ -26,6 +33,7 @@ export const ContainerEditPost: FC<IEditPost> = ({ id, onEdit }: IEditPost) => {
     setEditPost('')
     updatePost(editPost.value, editPost.key)
     onEdit(false)
+    !separatePost && setPostsPage(page)
   }
 
   const onChange = (e: any) => {
