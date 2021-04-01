@@ -10,7 +10,7 @@ import { useActions } from '../../hooks/useActions'
 
 export const NewPost: FC = () => {
   const history = useHistory()
-  const { addPost, removeComments } = useActions()
+  const { addPost } = useActions()
   const [newPost, setNewPost] = useState<IPost>({
     id: usePost().getLastId('post') + 1,
     userId: 0,
@@ -20,7 +20,6 @@ export const NewPost: FC = () => {
 
   const savePost = () => {
     addPost(newPost)
-    removeComments()
     history.push(`/post/${newPost.id}`)
   }
 

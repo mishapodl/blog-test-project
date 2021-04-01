@@ -1,8 +1,6 @@
 import React, { FC, useState } from 'react'
 import { useTypedSelector } from '../../hooks/useTypedSelector'
-import { useActions } from '../../hooks/useActions'
 import { usePost } from '../../hooks/usePost'
-import { Button } from '../Button/Button'
 import { CardPost } from '../CardPost/CardPost'
 import { IPost } from '../../types/posts'
 import { useUsers } from '../../hooks/useUsers'
