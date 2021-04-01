@@ -13,7 +13,7 @@ export const getCountPages = (posts: IPost[]): number[] => {
   return pages
 }
 
-export const getLocal = (key: string) => {
+export const getLocal = (key: 'users' | 'posts' | 'comments') => {
   const data: any = localStorage.getItem(key)
   return data ? JSON.parse(data) : null
 }

@@ -11,8 +11,7 @@ interface IFilter {
 
 export const Filter: FC<IFilter> = ({ setFilter }: IFilter) => {
   const { users } = useTypedSelector((state) => state.users)
-  const { posts } = usePost()
-  const lastUser = (posts.length && posts[posts.length - 1].userId) || null
+  const lastUser = usePost().getLastId('user')
 
   return (
     <>

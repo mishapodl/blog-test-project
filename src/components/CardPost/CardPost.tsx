@@ -1,11 +1,12 @@
 import React, { FC } from 'react'
 import { useActions } from '../../hooks/useActions'
 import { Button } from '../Button/Button'
-import { ContainerEditPost } from '../ContainerEditPost/ContainerEditPost'
+import { EditPost } from '../EditPost/EditPost'
 import { IPost } from '../../types/posts'
 import { useEdit } from '../../hooks/useEdit'
 import { Link } from 'react-router-dom'
 import './CardPost.scss'
+import { useTypedSelector } from '../../hooks/useTypedSelector'
 
 interface ICardPost {
   p: IPost
@@ -14,6 +15,7 @@ interface ICardPost {
 
 export const CardPost: FC<ICardPost> = ({ p, page = 1 }: ICardPost) => {
   const { deletePost } = useActions()
+  const { users } = useTypedSelector((state) => state.users)
   const { toEditPost, editActive, setEditActive } = useEdit()
 
   return (
@@ -23,11 +25,12 @@ export const CardPost: FC<ICardPost> = ({ p, page = 1 }: ICardPost) => {
         <Link to={`/post/${p.id}`}>
           <p>Body: {p.body}</p>
         </Link>
+        <span>{users && users[p.userId - 1].name}</span>
         <hr />
         <Button name="Edit" onClick={() => toEditPost(p)} />
         <Button name="Remove" onClick={() => deletePost(p.id, page)} />
       </div>
-      {editActive && <ContainerEditPost id={p.id} onEdit={setEditActive} />}
+      {editActive && <EditPost id={p.id} onEdit={setEditActive} />}
     </>
   )
 }

@@ -1,8 +1,6 @@
 import React, { FC, useState } from 'react'
 import { useTypedSelector } from '../../hooks/useTypedSelector'
-import { useActions } from '../../hooks/useActions'
 import { usePost } from '../../hooks/usePost'
-import { Button } from '../Button/Button'
 import { CardPost } from '../CardPost/CardPost'
 import { IPost } from '../../types/posts'
 import { useUsers } from '../../hooks/useUsers'
@@ -14,7 +12,6 @@ import './Posts.scss'
 export const Posts: FC = () => {
   const { loading, error, page } = useTypedSelector((state) => state.posts)
   const { currentPostsPage, posts } = usePost()
-  const { addPost } = useActions()
   const { getUser } = useUsers()
   const [user, setUser] = useState<IUser | null>(null)
 
@@ -43,7 +40,6 @@ export const Posts: FC = () => {
                   </div>
                 ))}
           </div>
-          <Button name="Add post" onClick={() => addPost({})} />
         </>
       ) : (
         <p>Loading...</p>
