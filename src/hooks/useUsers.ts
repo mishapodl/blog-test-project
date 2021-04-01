@@ -12,7 +12,7 @@ export const useUsers = () => {
     getLocal('users') ? getLocalUsers() : fetchUsers()
   }, [])
 
-  const getUser = (id: number): IUser => {
+  const getUser = (id: number | null): IUser => {
     return users.filter((u: IUser) => u.id == id)[0]
   }
 
