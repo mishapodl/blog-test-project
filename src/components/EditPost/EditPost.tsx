@@ -4,7 +4,7 @@ import { useTypedSelector } from '../../hooks/useTypedSelector'
 import { Button } from '../Button/Button'
 import { Input } from '../Input/Input'
 import { TextArea } from '../TextArea/TextArea'
-import './ContainerEditPost.scss'
+import './EditPost.scss'
 
 interface IEditPost {
   id: number
@@ -12,7 +12,7 @@ interface IEditPost {
   separatePost?: boolean
 }
 
-export const ContainerEditPost: FC<IEditPost> = ({
+export const EditPost: FC<IEditPost> = ({
   id,
   onEdit,
   separatePost = false,
@@ -37,12 +37,12 @@ export const ContainerEditPost: FC<IEditPost> = ({
     !separatePost && setPostsPage(page)
   }
 
-  const onChange = (e: any) => {
+  const onChange = (e: React.FormEvent<any>) => {
     setEditPost({
       ...editPost,
       value: {
         ...editPost.value,
-        [e.target.name]: e.target.value,
+        [e.currentTarget.name]: e.currentTarget.value,
       },
     })
   }
@@ -52,12 +52,12 @@ export const ContainerEditPost: FC<IEditPost> = ({
       <Input
         name="title"
         value={editPost.value.title}
-        onChange={(e: any) => onChange(e)}
+        onChange={(e: React.FormEvent<any>) => onChange(e)}
       />
       <TextArea
         name="body"
         value={editPost.value.body}
-        onChange={(e: any) => onChange(e)}
+        onChange={(e: React.FormEvent<any>) => onChange(e)}
       />
       <Button name="Save" onClick={() => saveUpdatesPost()} />
     </div>

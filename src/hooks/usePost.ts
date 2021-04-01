@@ -16,5 +16,13 @@ export const usePost = () => {
     return posts.filter((p: IPost) => p.id == id)[0]
   }
 
-  return { posts, currentPostsPage, specificPost }
+  const getLastId = (key: 'user' | 'post') => {
+    return (
+      (posts.length &&
+        posts[posts.length - 1][key === 'user' ? 'userId' : 'id']) ||
+      0
+    )
+  }
+
+  return { posts, currentPostsPage, specificPost, getLastId }
 }
