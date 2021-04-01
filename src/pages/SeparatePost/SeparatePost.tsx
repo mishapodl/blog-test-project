@@ -29,8 +29,7 @@ export const SeparatePost: FC = () => {
         <div>
           <h3>{post.title}</h3>
           <p>{post.body}</p>
-          {console.log(users)}
-          <span>{users[post.userId - 1].name}</span>
+          <span>{users && users[post.userId - 1].name}</span>
         </div>
       )}
       <Button name="Edit" onClick={() => toEditPost(post)} />

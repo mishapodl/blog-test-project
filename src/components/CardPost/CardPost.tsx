@@ -25,7 +25,7 @@ export const CardPost: FC<ICardPost> = ({ p, page = 1 }: ICardPost) => {
         <Link to={`/post/${p.id}`}>
           <p>Body: {p.body}</p>
         </Link>
-        <span>{users && users[p.userId - 1].name}</span>
+        <span>{users.length && users[p.userId - 1].name}</span>
         <hr />
         <Button name="Edit" onClick={() => toEditPost(p)} />
         <Button name="Remove" onClick={() => deletePost(p.id, page)} />
