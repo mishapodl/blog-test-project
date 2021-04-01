@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
 import { useTypedSelector } from './../../hooks/useTypedSelector'
 import { Button } from './../Button/Button'
 import { usePost } from '../../hooks/usePost'
@@ -11,8 +11,7 @@ interface IFilter {
 
 export const Filter: FC<IFilter> = ({ setFilter }: IFilter) => {
   const { users } = useTypedSelector((state) => state.users)
-  const { posts } = usePost()
-  const lastUser = (posts.length && posts[posts.length - 1].userId) || null
+  const lastUser = usePost().getLastId('user')
 
   return (
     <>
