@@ -1,4 +1,3 @@
-// Comments
 export interface IComment {
   id: number
   postId: number
@@ -17,7 +16,6 @@ export enum CommentsActionTypes {
   FETCH_COMMENTS = 'FETCH_COMMENTS',
   FETCH_COMMENTS_SUCCESS = 'FETCH_COMMENTS_SUCCESS',
   FETCH_COMMENTS_ERROR = 'FETCH_COMMENTS_ERROR',
-  SET_POSTS_PAGE = 'SET_POSTS_PAGE',
 }
 
 interface IFetchCommentsAction {
