@@ -8,7 +8,9 @@ export const useSearch = () => {
 
   const searchText = (text: string, findBy: string) => {
     const resSearching = posts.slice(0, 10).filter(({ title, body }: IPost) => {
-      return findBy === 'title' ? title.includes(text) : body.includes(text)
+      return findBy === 'title'
+        ? title.toLocaleLowerCase().includes(text)
+        : body.toLocaleLowerCase().includes(text)
     })
     setFindedPosts(resSearching)
   }

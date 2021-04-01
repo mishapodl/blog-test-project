@@ -24,6 +24,7 @@ export const Posts: FC = () => {
   return (
     <div>
       <Search />
+      <div style={{ borderBottom: '2px solid red', margin: '20px 0' }}></div>
       <Filter setFilter={setFilter} />
       {!loading ? (
         <>

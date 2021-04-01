@@ -25,9 +25,15 @@ export const Search = () => {
         value={text}
         placeholder="Search text"
       />
-      {findedPosts.map((p: IPost) => (
-        <CardPost key={p.id} p={p} />
-      ))}
+      {text && (
+        <div style={{ display: 'flex' }}>
+          {findedPosts.length ? (
+            findedPosts.map((p: IPost) => <CardPost key={p.id} p={p} />)
+          ) : (
+            <p style={{ color: 'red', fontSize: '20px' }}>Posts not found</p>
+          )}
+        </div>
+      )}
     </div>
   )
 }
