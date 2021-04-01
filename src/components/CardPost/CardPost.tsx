@@ -9,10 +9,10 @@ import './CardPost.scss'
 
 interface ICardPost {
   p: IPost
-  page: number
+  page?: number
 }
 
-export const CardPost: FC<ICardPost> = ({ p, page }: ICardPost) => {
+export const CardPost: FC<ICardPost> = ({ p, page = 1 }: ICardPost) => {
   const { deletePost } = useActions()
   const { toEditPost, editActive, setEditActive } = useEdit()
 

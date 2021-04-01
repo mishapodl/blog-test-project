@@ -8,6 +8,7 @@ import { IPost } from '../../types/posts'
 import { useUsers } from '../../hooks/useUsers'
 import { IUser } from '../../types/users'
 import { Filter } from '../Filter/Filter'
+import { Search } from '../Search/Search'
 import './Posts.scss'
 
 export const Posts: FC = () => {
@@ -25,6 +26,7 @@ export const Posts: FC = () => {
 
   return (
     <div>
+      <Search />
       <Filter setFilter={setFilter} />
       {!loading ? (
         <>
