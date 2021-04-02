@@ -13,9 +13,9 @@ export const NewPost: FC = () => {
   const { addPost } = useActions()
   const [newPost, setNewPost] = useState<IPost>({
     id: usePost().getLastId('post') + 1,
-    userId: 0,
-    title: '',
-    body: '',
+    userId: 1,
+    title: 'Title',
+    body: 'Body',
   })
 
   const savePost = () => {
@@ -31,23 +31,29 @@ export const NewPost: FC = () => {
   }
 
   return (
-    <div>
+    <div className="container-new-post">
+      <label>User ID - (name)</label>
       <Input
         name="userId"
         value={newPost.userId + ''}
         onChange={(e: React.FormEvent<any>) => onChange(e)}
+        classes="edit-title"
       />
+      <label>Title</label>
       <Input
         name="title"
         value={newPost.title}
         onChange={(e: React.FormEvent<any>) => onChange(e)}
+        classes="edit-title"
       />
+      <label>Text</label>
       <TextArea
         name="body"
         value={newPost.body}
         onChange={(e: React.FormEvent<any>) => onChange(e)}
+        classes="edit-body"
       />
-      <Button name="Save" onClick={() => savePost()} />
+      <Button name="Add and save" onClick={() => savePost()} classes="btn-save" />
     </div>
   )
 }

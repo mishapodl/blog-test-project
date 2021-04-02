@@ -10,14 +10,12 @@ export const Pagination: FC = () => {
   const pages = getCountPages(posts)
 
   return (
-    <div>
-      <div style={{ display: 'flex' }}>
-        {pages.map((p, i) => (
-          <p key={i} onClick={() => setPostsPage(p)} className="pagination">
-            {p}
-          </p>
-        ))}
-      </div>
+    <div className="pagination">
+      {pages.map((p, i) => (
+        <div key={i} onClick={() => setPostsPage(p)} className="page">
+          {p}
+        </div>
+      ))}
     </div>
   )
 }

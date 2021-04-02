@@ -5,10 +5,11 @@ import './MainPage.scss'
 
 export const MainPage: FC = () => {
   return (
-    <div>
-      <h1>MainPage</h1>
-      <Posts />
+    <>
+      <section className="container">
+        <Posts />
+      </section>
       <Pagination />
-    </div>
+    </>
   )
 }

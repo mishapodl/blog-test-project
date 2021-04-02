@@ -48,18 +48,20 @@ export const EditPost: FC<IEditPost> = ({
   }
 
   return (
-    <div>
+    <>
       <Input
         name="title"
         value={editPost.value.title}
         onChange={(e: React.FormEvent<any>) => onChange(e)}
+        classes="edit-title"
       />
       <TextArea
         name="body"
         value={editPost.value.body}
         onChange={(e: React.FormEvent<any>) => onChange(e)}
+        classes="edit-body"
       />
-      <Button name="Save" onClick={() => saveUpdatesPost()} />
-    </div>
+      <Button name="Save" onClick={() => saveUpdatesPost()} classes="btn-save"/>
+    </>
   )
 }

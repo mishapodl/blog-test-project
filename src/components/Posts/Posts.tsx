@@ -22,29 +22,36 @@ export const Posts: FC = () => {
   loading && error && <h1>{error}</h1>
 
   return (
-    <div>
-      <Search />
-      <div style={{ borderBottom: '2px solid red', margin: '20px 0' }}></div>
-      <Filter setFilter={setFilter} />
+    <>
+      <div className="container-search">
+        <Search />
+      </div>
+      <div>
+        <h1>POSTS</h1>
+      </div>
+      <div className="filter">
+        <Filter setFilter={setFilter} />
+      </div>
       {!loading ? (
-        <>
-          <div>
-            {!user
-              ? currentPostsPage.map((p: IPost) => (
-                  <div key={p.id}>
-                    <CardPost p={p} page={page} />
-                  </div>
-                ))
-              : posts.map((p) => (
-                  <div key={p.id}>
-                    {user.id == p.userId && <CardPost p={p} page={page} />}
-                  </div>
-                ))}
-          </div>
-        </>
+        <div className="container-cards">
+          {!user
+            ? currentPostsPage.map((p: IPost) => (
+                <div className="card" key={p.id}>
+                  <CardPost p={p} page={page} />
+                </div>
+              ))
+            : posts.map(
+                (p) =>
+                  user.id == p.userId && (
+                    <div className="card" key={p.id}>
+                      <CardPost p={p} page={page} />
+                    </div>
+                  )
+              )}
+        </div>
       ) : (
         <p>Loading...</p>
       )}
-    </div>
+    </>
   )
 }

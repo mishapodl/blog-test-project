@@ -17,3 +17,7 @@ export const getLocal = (key: 'users' | 'posts' | 'comments') => {
   const data: any = localStorage.getItem(key)
   return data ? JSON.parse(data) : null
 }
+
+export const cutString = (str: string, count: number, key = ' ') => {
+  return str.split(key).slice(0, count).join(' ')
+}

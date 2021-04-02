@@ -1,0 +1,17 @@
+
+.container-new-post {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 0 auto;
+  .edit-title {
+    margin-bottom: 20px;
+    border: 1px solid black;
+    margin-top: 5px;
+  }
+  .edit-body {
+    margin-top: 5px;
+    height: 300px;
+  }
+}

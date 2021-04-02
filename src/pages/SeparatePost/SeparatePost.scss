@@ -1,0 +1,66 @@
+
+.article {
+  max-width: 680px;
+  margin: 0 auto;
+  position: relative;
+
+  .article-content {
+    border-bottom: 2px dashed;
+    padding-bottom: 5px;
+    margin-bottom: 40px;
+
+    .article {
+      &-title {
+        text-transform: uppercase;
+        text-align: center;
+        padding: 20px;
+        font-size: 32px;
+      }
+      &-body {
+        text-indent: 20px;
+        margin-bottom: 20px;
+      }
+      &-author {
+        text-align: right;
+        display: block;
+        font-size: 14px;
+        font-weight: bold;
+      }
+    }
+  }
+  .btn-edit {
+    position: absolute;
+    font-size: 22px;
+    background: #87878773;
+    cursor: pointer;
+    top: 0px;
+    right: -50px;
+    border: 1px solid;
+    height: 35px;
+    width: 35px;
+    border-radius: 100%;
+    color: dodgerblue;
+    transform: rotate(125deg);
+  }
+}
+
+.comments {
+  margin-top: 20px;
+  .comment {
+    border-bottom: 1px solid;
+    margin-bottom: 25px;
+    padding-bottom: 3px;
+    &-email {
+      font-weight: bold;
+      font-size: 12px;
+      text-align: right;
+      display: block;
+      margin-bottom: 5px;
+    }
+    &-body {
+      font-size: 14px;
+      padding: 5px 10px;
+      text-indent: 13px;
+    }
+  }
+}

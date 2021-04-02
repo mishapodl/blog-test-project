@@ -2,7 +2,7 @@ import React, { FC, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { Button } from '../../components/Button/Button'
 import { EditPost } from '../../components/EditPost/EditPost'
-import { getLocal } from '../../helpers'
+import { cutString, getLocal } from '../../helpers'
 import { useActions } from '../../hooks/useActions'
 import { useEdit } from '../../hooks/useEdit'
 import { usePost } from '../../hooks/usePost'
@@ -24,26 +24,35 @@ export const SeparatePost: FC = () => {
   }, [])
 
   return (
-    <div>
+    <div className="article">
       {post && (
-        <div>
-          <h3>{post.title}</h3>
-          <p>{post.body}</p>
-          <span>{users && users[post.userId - 1].name}</span>
+        <div className="article-content">
+          <h3 className="article-title">{post.title}</h3>
+          <p className="article-body">{post.body}</p>
+          <span className="article-author">
+            {users && users[post.userId - 1].name}
+          </span>
         </div>
       )}
-      <Button name="Edit" onClick={() => toEditPost(post)} />
-      <h1>Post ID: {id}</h1>
+
+      {!editActive && (
+        <Button name="✏" onClick={() => toEditPost(post)} classes="btn-edit" />
+      )}
       {editActive && (
-        <EditPost id={id} onEdit={setEditActive} separatePost={true} />
-      )}
-      {comments.map(({ id, name, body }: IComment) => (
-        <div key={id}>
-          <h3>Name: {name}</h3>
-          <p>{body}</p>
-          <hr />
+        <div className="container-edit-post inner-container-edit">
+          <EditPost id={id} onEdit={setEditActive} separatePost={true} />
         </div>
-      ))}
+      )}
+
+      <div className="comments">
+        <h3>Comments</h3>
+        {comments.map(({ id, email, body }: IComment) => (
+          <div className="comment" key={id}>
+            <span className="comment-email">{cutString(email, 1, '@')}</span>
+            <p className="comment-body">{body}</p>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }

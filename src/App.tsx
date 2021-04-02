@@ -9,16 +9,18 @@ import { NewPost } from './pages/NewPost/NewPost'
 export const App: FC = () => (
   <>
     <header>
-      Header: <Link to={Routes.MainPage}>Home</Link>
-      NewPost: <Link to={Routes.NewPost}>NewPost</Link>
+      <nav>
+        <Link to={Routes.MainPage}>Home</Link>
+        <Link to={Routes.NewPost}>New post</Link>
+      </nav>
     </header>
-    <div>
+    <main>
       <Switch>
         <Route path={Routes.MainPage} exact component={MainPage} />
         <Route path={Routes.Post} component={SeparatePost} />
         <Route path={Routes.NewPost} component={NewPost} />
       </Switch>
-    </div>
+    </main>
     <footer>Footer</footer>
   </>
 )

@@ -1,0 +1,41 @@
+.btn-read-more,
+.btn-save {
+  border: 1px solid white;
+  color: #fff;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.btn-edit,
+.btn-remove {
+  font-size: 18px;
+  cursor: pointer;
+  border: 1px solid;
+  height: 26px;
+  width: 26px;
+  border-radius: 100%;
+}
+
+.btn {
+  &-edit {
+    transform: rotate(125deg);
+    color: dodgerblue;
+    background: #87878773;
+  }
+  &-remove {
+    color: red;
+    background: #e5868673;
+  }
+  &-save {
+    padding: 5px;
+    background: #000000;
+    font-size: 14px;
+    width: 50%;
+    margin: 0 auto;
+  }
+  &-read-more {
+    padding: 3px;
+    background: #000000b3;
+    font-size: 12px;
+  }
+}

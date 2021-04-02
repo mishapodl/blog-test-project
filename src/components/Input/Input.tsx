@@ -2,19 +2,23 @@ import React, { FC } from 'react'
 import './Input.scss'
 
 interface IInptut {
-  value: string
+  value?: string
   name: string
-  type?: string
+  type?: 'text' | 'radio'
   placeholder?: string
-  onChange: (e: any) => void
+  onChange?: (e: any) => void
+  classes?: string
+  checked?: boolean
 }
 
 export const Input: FC<IInptut> = ({
-  value,
+  value = '',
   onChange,
   name,
   type = 'text',
   placeholder = '',
+  classes = '',
+  checked,
 }: IInptut) => {
   return (
     <>
@@ -24,6 +28,8 @@ export const Input: FC<IInptut> = ({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
+        className={classes}
+        checked={checked && checked}
       />
     </>
   )
