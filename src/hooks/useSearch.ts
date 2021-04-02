@@ -7,7 +7,7 @@ export const useSearch = () => {
   const [findedPosts, setFindedPosts] = useState<IPost[]>([])
 
   const searchText = (text: string, findBy: string) => {
-    const resSearching = posts.slice(0, 10).filter(({ title, body }: IPost) => {
+    const resSearching = posts.filter(({ title, body }: IPost) => {
       return findBy === 'title'
         ? title.toLocaleLowerCase().includes(text)
         : body.toLocaleLowerCase().includes(text)

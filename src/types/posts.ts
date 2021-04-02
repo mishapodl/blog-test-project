@@ -13,7 +13,6 @@ export interface IPostsState {
   page: number
 }
 
-// Posts
 export enum PostsActionTypes {
   FETCH_POST = 'FETCH_POST',
   FETCH_POST_SUCCESS = 'FETCH_POST_SUCCESS',
