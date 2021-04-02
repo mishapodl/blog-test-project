@@ -19,6 +19,10 @@ export const loadComments = async (id: number) => {
 }
 
 export const loadUsers = async () => {
-  const { data } = await axios.get(`https://jsonplaceholder.typicode.com/users`)
+  const { data } = await axios.get(
+    `https://jsonplaceholder.typicode.com/users?_limit=${
+      Math.round(LIMIT_LODAED_POSTS / 10) + 1
+    }`
+  )
   return data
 }
